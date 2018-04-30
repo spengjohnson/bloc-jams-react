@@ -1,4 +1,3 @@
-
 export default [{
   title: 'The Colors',
   artist: 'Pablo Picasso',
