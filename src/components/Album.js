@@ -1,5 +1,7 @@
 import React, { Component } from 'react'; 
 import albumData from './../data/albums'; 
+import { Link } from 'react-router-dom'; 
+import Ionicon from 'react-ionicons'; 
 
 class Album extends Component {
 	constructor(props) {
@@ -19,7 +21,7 @@ class Album extends Component {
 		return (
 			<section className="album">
 				<section id="album-info">
-					<img id="album-cover-art" src={this.state.album.albumCover} />
+					<img id="album-cover-art" src={this.state.album.albumCover} alt="Album Cover" />
 					<div className="album-details">
 						<h1 id="album-title">{this.state.album.title}</h1>
 						<h2 className="artist">{this.state.album.artist}</h2>
@@ -33,6 +35,21 @@ class Album extends Component {
 					<col id="song-duration-column" />
 				</colgroup>
 				<tbody>
+					<section className="songs">
+						{
+							this.state.album.songs.map( (song,index) =>
+								<Link to={`/album/${song.slug}`} key={index}>
+									<tr>
+										<td>{index + 1}</td>
+										<td>{song.title}</td>
+										<td>{song.duration}</td>
+										<span className="ion-ios-play">Play</span>
+									</tr>
+								</Link>
+							)
+						}
+					</section>
+				
 				</tbody>
 			</table>
 		</section>
@@ -42,3 +59,4 @@ class Album extends Component {
 
 
 export default Album; 
+
