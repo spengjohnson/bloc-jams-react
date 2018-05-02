@@ -1,6 +1,5 @@
 import React, { Component } from 'react'; 
 import albumData from './../data/albums'; 
-import { Link } from 'react-router-dom'; 
 import Ionicon from 'react-ionicons'; 
 
 class Album extends Component {
@@ -29,23 +28,25 @@ class Album extends Component {
 					</div>
 			</section>
 			<table id="song-list">
-				<tbody>
+				
 				<colgroup>
 					<col id="song-number-column" />
 					<col id="song-title-column" />
 					<col id="song-duration-column" />
 				</colgroup>
-				
+				<tbody>
 					<section className="songs">
-						{
-							this.state.album.songs.map( (song,index) =>
-								<tr>
-									<Link to={`/album/${song.slug}`} key={index}>
-											<td>{index + 1}</td>
-											<td>{song.title}</td>
-											<td>{song.duration}</td>
-											<span className="ion-ios-play">Play</span>	
-									</Link>
+						{this.state.album.songs.map( (song,index) =>
+								<tr className="song" key={index}>
+									<td className="song-actions">
+										<button>
+											<span className="song-number">{index + 1}</span>
+											<span className="ion-play"></span>
+											<span className="ion-pause"></span>
+										</button>
+									</td>
+									<td className="song-title">{song.title}</td>
+									<td className="song-duration">{song.duration}</td>
 								</tr>
 							)
 						}
@@ -59,4 +60,3 @@ class Album extends Component {
 
 
 export default Album; 
-
