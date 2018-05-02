@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import albumData from './../data/albums'; 
+import Ionicon from 'react-ionicons'; 
 
 class Album extends Component {
 	constructor(props) {
@@ -18,25 +19,41 @@ class Album extends Component {
 	render() {
 		return (
 			<section className="album">
-			{this.props.match.params.slug} Album will go here
 				<section id="album-info">
-					<img id="album-cover-art" src={this.state.album.albumCover} alt="album Cover" />
+					<img id="album-cover-art" src={this.state.album.albumCover} alt="Album Cover" />
 					<div className="album-details">
 						<h1 id="album-title">{this.state.album.title}</h1>
 						<h2 className="artist">{this.state.album.artist}</h2>
-						<div id="release-info">{this.state.album.releaseInfo}</div> 
+						<div id="release-info">{this.state.album.releaseInfo}</div>
 					</div>
-				</section>
-				<table id="song-list">
-					<colgroup>
-						<col id="song-number-column" />
-						<col id="song-title-column" /> 
-						<col id="song-duration-column" />
-					</colgroup>
-					<tbody>
-					</tbody>
-				</table>
 			</section>
+			<table id="song-list">
+				
+				<colgroup>
+					<col id="song-number-column" />
+					<col id="song-title-column" />
+					<col id="song-duration-column" />
+				</colgroup>
+				<tbody>
+					<section className="songs">
+						{this.state.album.songs.map( (song,index) =>
+								<tr className="song" key={index}>
+									<td className="song-actions">
+										<button>
+											<span className="song-number">{index + 1}</span>
+											<span className="ion-play"></span>
+											<span className="ion-pause"></span>
+										</button>
+									</td>
+									<td className="song-title">{song.title}</td>
+									<td className="song-duration">{song.duration}</td>
+								</tr>
+							)
+						}
+					</section>
+				</tbody>
+			</table>
+		</section>
 		); 
 	}
 }
