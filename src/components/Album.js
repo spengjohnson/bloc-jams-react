@@ -1,6 +1,5 @@
 import React, { Component } from 'react'; 
 import albumData from './../data/albums'; 
-import Ionicon from 'react-ionicons'; 
 
 class Album extends Component {
 	constructor(props) {
@@ -34,8 +33,8 @@ class Album extends Component {
 					<col id="song-title-column" />
 					<col id="song-duration-column" />
 				</colgroup>
-				<tbody>
-					<section className="songs">
+				<tbody className="songs">
+					
 						{this.state.album.songs.map( (song,index) =>
 								<tr className="song" key={index}>
 									<td className="song-actions">
@@ -50,7 +49,6 @@ class Album extends Component {
 								</tr>
 							)
 						}
-					</section>
 				</tbody>
 			</table>
 		</section>
