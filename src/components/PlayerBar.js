@@ -16,7 +16,7 @@ class PlayerBar extends Component {
 			        </button>
 			    </section>
 			    <section id="time-control">
-			    	<div class-Name="current-time">–:––</div>
+			    	<div className="current-time">–:––</div>
 			    	<input type="range" className="seek-bar" value="0" />
 			    	<div className="total-time">–:––</div>
 			    </section> 
