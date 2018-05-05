@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import albumData from './../data/albums'; 
+import PlayerBar from './PlayerBar'; 
 
 class Album extends Component {
 	constructor(props) {
@@ -11,9 +12,47 @@ class Album extends Component {
 	}); 
 
 	this.state = {
-		album: album
+		album: album, 
+		currentSong: album.songs[0], 
+		isPlaying: false
 	}; 
+
+	this.audioElement=document.createElement('audio'); 
+	this.audioElement.src=album.songs[0].audioSrc; 
 }
+
+	play() {
+		this.audioElement.play(); 
+		this.setState({isPlaying:true}); 
+	}
+
+	pause() {
+		this.audioElement.pause(); 
+		this.setState({isPlaying:false}); 
+	}
+
+	setSong(song) {
+		this.audioElement.src= song.audioSrc; 
+		this.setState({currentSong:song}); 
+	}
+
+	handleSongClick(song) {
+		const isSameSong=this.state.currentSong===song; 
+		if (this.state.isPlaying && isSameSong) {
+			this.pause(); 
+		} else {
+			if (!isSameSong) {this.setSong(song); }
+			this.play(); 
+		}
+	}
+
+	handlePrevClick(song) {
+		const currentIndex=this.state.album.songs.findIndex(song => this.state.currentSong===song); 
+		const newIndex= Math.max(0, currentIndex-1); 
+		const newSong= this.state.album.songs[newIndex]; 
+		this.setSong(newSong); 
+		this.play(); 
+	}
 
 	render() {
 		return (
@@ -33,10 +72,17 @@ class Album extends Component {
 					<col id="song-title-column" />
 					<col id="song-duration-column" />
 				</colgroup>
+<<<<<<< HEAD
 				<tbody className="songs">
 					
 						{this.state.album.songs.map( (song,index) =>
 								<tr className="song" key={index}>
+=======
+				<tbody>
+					<section className="songs">
+						{this.state.album.songs.map( (song,index) =>
+								 <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+>>>>>>> master
 									<td className="song-actions">
 										<button>
 											<span className="song-number">{index + 1}</span>
@@ -49,8 +95,18 @@ class Album extends Component {
 								</tr>
 							)
 						}
+<<<<<<< HEAD
+=======
+					</section>
+>>>>>>> master
 				</tbody>
 			</table>
+			<PlayerBar 
+				isPlaying={this.state.isPlaying} 
+				currentSong={this.state.currentSong}
+				handleSongClick={() => this.handleSongClick(this.state.currentSong)} 
+				handlePrevClick={() => this.handlePrevClick(this.handlePrevClick)}
+			/> 
 		</section>
 		); 
 	}
