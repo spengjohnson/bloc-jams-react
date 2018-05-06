@@ -80,8 +80,7 @@ class Album extends Component {
 					<col id="song-title-column" />
 					<col id="song-duration-column" />
 				</colgroup>
-				<tbody>
-					<section className="songs">
+				<tbody className="songs">
 						{this.state.album.songs.map( (song,index) =>
 								 <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
 									<td className="song-actions">
@@ -96,7 +95,6 @@ class Album extends Component {
 								</tr>
 							)
 						}
-					</section>
 				</tbody>
 			</table>
 			<PlayerBar 
