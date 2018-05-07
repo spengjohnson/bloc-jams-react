@@ -42,6 +42,8 @@ class Album extends Component {
 				this.setState({duration: this.audioElement.duration}); 
 			}
 		}; 
+		this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate); 
+		this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange); 
 	}
 
 	componentWillUnmount() {
@@ -87,6 +89,12 @@ class Album extends Component {
 		this.setState({currentTime: newTime}); 
 	}
 
+	handleVolumeControl(e) {
+		const newVolume = this.audioElement.defaultValue; 
+		this.audioElement.defaultValue= newVolume; 
+		this.setState({currentVolume: newVolume}); 
+	}
+
 	render() {
 		return (
 			<section className="album">
@@ -130,6 +138,7 @@ class Album extends Component {
 				handlePrevClick={() => this.handlePrevClick()}
 				handleNextClick={() => this.handleNextClick()}
 				handleTimeChange={(e) => this.handleTimeChange(e)}
+				handleVolumeControl={(e) => this.handleVolumeControl(e)}
 			/> 
 		</section>
 		); 
