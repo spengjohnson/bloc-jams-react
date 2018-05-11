@@ -15,14 +15,28 @@ class PlayerBar extends Component {
 			            <span className="ion-skip-forward"></span>
 			        </button>
 			    </section>
-			    <section id="time-control">
-			    	<div className="current-time">–:––</div>
-			    	<input type="range" className="seek-bar" defaultValue="0" />
-			    	<div className="total-time">–:––</div>
+			    <section id="time-control" onChange={this.props.handleTimeChange}>
+			    	<div className="current-time">{this.props.currentTime}</div>
+			    	<input 
+			    		type="range" 
+			    		className="seek-bar" 
+			    		value={(this.props.currentTime/this.props.duration) || 0 }
+			    		max = "1"
+			    		min = "0"
+			    		step="0.01" 
+			    	/>
+			    	<div className="total-time">{this.props.duration.toString()}</div>
 			    </section> 
-			    <section id="volume-control">
+			    <section id="volume-control" onChange={this.props.handleVolumeChange}>
 			    	<div className="icon ion-volume-low"></div>
-			    	<input type="range" className="seek-bar" defaultValue="80" />
+			    	<input 
+			    		type="range" 
+			    		className="seek-bar" 
+			    		input={this.props.currentVolume}
+			    		max= "1"
+			    		min="0" 
+			    		step="0.01"
+			    	/>
 			    	<div className="icon ion-volume-high"></div> 
 			    </section> 
 			</section>
