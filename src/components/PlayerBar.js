@@ -43,6 +43,6 @@ class PlayerBar extends Component {
 			</section>
 		); 
 	}
-}
+}  
 
 export default PlayerBar; 
