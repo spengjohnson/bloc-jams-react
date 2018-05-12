@@ -101,7 +101,16 @@ class Album extends Component {
 		this.setState({currentVolume: e.target.value}); 
 	}
 
-	
+	formatTime(timeInSeconds) {
+		const minutes = Math.floor(timeInSeconds/60); 
+		const seconds = Math.floor(timeInSeconds % 60); 
+		if (timeInSeconds < 10) {
+			return minutes + " : 0" + seconds; 
+		} else {
+			return minutes + " :  " + seconds; 
+		}
+		
+	}
 
 	render() {
 		return (
@@ -131,7 +140,7 @@ class Album extends Component {
 										</button>
 									</td>
 									<td className="song-title">{song.title}</td>
-									<td className="song-duration">{song.duration}</td>
+									<td className="song-duration">{this.formatTime(song.duration)}</td>
 								</tr>
 							)
 						}
@@ -148,6 +157,7 @@ class Album extends Component {
 				handleNextClick={() => this.handleNextClick()}
 				handleTimeChange={(e) => this.handleTimeChange(e)}
 				handleVolumeChange={(e) => this.handleVolumeChange(e)}
+				formatTime={(t) => this.formatTime(t)}
 			/> 
 		</section>
 		); 
