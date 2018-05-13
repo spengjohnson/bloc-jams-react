@@ -16,7 +16,7 @@ class PlayerBar extends Component {
 			        </button>
 			    </section>
 			    <section id="time-control" onChange={this.props.handleTimeChange}>
-			    	<div className="current-time">{this.props.currentTime}</div>
+			    	<div className="current-time"></div>
 			    	<div className="current-time">{this.props.formatTime(this.props.currentTime)}</div>
 			    	<input 
 			    		type="range" 
