@@ -1,0 +1,30 @@
+body {
+    height: 100%;
+  	background-image: url("bruno-cervera-408708-unsplash.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1, .hero-title {
+	font-family: Audiowide; 
+	font-size: 5.2vw; 
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-shadow: 2px 2px 4px #000000;
+}
+
+h2 {
+	font-family: Permanent Marker;
+	color: white;
+}
+
+.point-description {
+	color: white;
+	font-family: Permanent Marker; 
+}
+

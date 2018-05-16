@@ -1,4 +1,5 @@
 import React from 'react'; 
+import './landing.css'; 
 
 const Landing = () => (
 	<section className="landing">
@@ -11,7 +12,7 @@ const Landing = () => (
 	</div>
 		<div className="point">
 		<h2 className="point-title">Unlimited, streaming, ad-free</h2>
-		<p className="point-description">No arbitraty limits. No distractions.</p>
+		<p className="point-description">No arbitrary limits. No distractions.</p>
 	</div>
 		<div className="point">
 		<h2 className="point-title">Mobile enabled</h2>
